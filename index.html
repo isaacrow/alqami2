@@ -454,7 +454,8 @@
       <span class="brand-logo">alqami<span class="dot">.</span></span>
       <span class="brand-badge" id="hdr-badge">القرآن الكريم (1009 هـ / 1600 M)</span>
     </a>
-    <div class="header-actions">
+
+
       <!-- Language Switcher Button -->
       <button class="lang-switcher-btn" id="btn-lang-toggle" title="Switch Language / تغيير اللغة">
         <svg style="width:14px;height:14px;fill:currentColor;" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.08c1.74-1.94 2.98-4.17 3.71-6.49H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
@@ -880,6 +881,20 @@
       }
     }
 
+    function clearMetadata() {
+      const emptyText = currentLang === 'ar' ? 'غير متوفر' : 'N/A';
+      document.querySelector("#disp-title").innerText = emptyText;
+      document.querySelector("#disp-author").innerText = emptyText;
+      document.querySelector("#disp-date").innerText = emptyText;
+      document.querySelector("#disp-extent").innerText = emptyText;
+      document.querySelector("#disp-material").innerText = emptyText;
+      document.querySelector("#disp-binding").innerText = emptyText;
+      document.querySelector("#disp-notes").innerText = emptyText;
+      document.title = "alqami";
+      const badge = document.querySelector("#hdr-badge");
+      if (badge) badge.innerText = "alqami";
+    }
+
     function parseAndApplyRDF(xmlStr) {
       const doc = new DOMParser().parseFromString(xmlStr, "application/xml");
       const find = (sel) => {
@@ -911,6 +926,39 @@
 
     loadRDF('data.rdf');
 
+    // Dynamic Model Selection
+    document.querySelector("#model-selector").addEventListener('change', (e) => {
+      const selectedId = e.target.value;
+      const glbFile = selectedId + '.glb';
+      const rdfFile = selectedId === 'model' ? 'data.rdf' : selectedId + '.rdf';
+      
+      // Update viewer
+      viewer.src = glbFile;
+      
+      // Update metadata
+      clearMetadata();
+      loadRDF(rdfFile);
+      
+      // Reset view
+      viewer.cameraOrbit = "0deg 75deg 105%";
+      viewer.cameraTarget = "auto auto auto";
+      viewer.scale = "1 1 1";
+      document.querySelector("#label-scale").innerText = "100%";
+      document.querySelectorAll('[data-scale]').forEach(b => b.classList.toggle('active', b.dataset.scale === "1.0"));
+
+      // Update iOS USDZ if applicable
+      if (isIOS) {
+        viewer.removeAttribute('ios-src');
+        const usdzFile = selectedId + '.usdz';
+        fetch(usdzFile, { method: 'HEAD' })
+          .then(r => {
+            if (r.ok) viewer.setAttribute('ios-src', usdzFile);
+            else prepareIOSUSDZ(glbFile);
+          })
+          .catch(() => prepareIOSUSDZ(glbFile));
+      }
+    });
+
     // Dynamic File Input for RDF
     const fileInput = document.querySelector("#file-rdf");
     fileInput.addEventListener('change', (e) => {
@@ -938,7 +986,7 @@
         .catch(() => prepareIOSUSDZ());
     }
 
-    async function prepareIOSUSDZ() {
+    async function prepareIOSUSDZ(glbFile = 'model.glb') {
       try {
         statusText.style.display = 'block';
         statusText.innerText = currentLang === 'ar' ? '⚡ جاري تهيئة الواقع المعزز للآيفون...' : '⚡ Optimizing AR for iPhone...';
@@ -952,7 +1000,7 @@
         const loader = new GLTFLoader();
         const exporter = new USDZExporter();
 
-        loader.load('model.glb', async (gltf) => {
+        loader.load(glbFile, async (gltf) => {
           try {
             const usdzArrayBuffer = await exporter.parseAsync(gltf.scene);
             const blob = new Blob([usdzArrayBuffer], { type: 'model/vnd.usdz+zip' });
