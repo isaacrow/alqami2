@@ -1,0 +1,978 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <title>alqami â€¢ Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ… (Ù…Ø®Ø·ÙˆØ· 1009 Ù‡Ù€ / 1600 M)</title>
+  
+  <!-- Google Model Viewer component -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  
+  <style>
+    :root {
+      --apple-bg: #fbfbfd;
+      --apple-card: #ffffff;
+      --apple-text: #1d1d1f;
+      --apple-subtext: #86868b;
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-border: rgba(0, 0, 0, 0.08);
+      --apple-pill: #f5f5f7;
+      --apple-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Traditional Arabic", Tahoma, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--apple-bg);
+      color: var(--apple-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Apple Minimalist White Header */
+    header {
+      width: 100%;
+      max-width: 1200px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(251, 251, 253, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--apple-border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--apple-text);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .brand-logo .dot {
+      color: var(--apple-blue);
+    }
+
+    .brand-badge {
+      background: var(--apple-pill);
+      color: var(--apple-subtext);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--apple-border);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Language Switcher Pill */
+    .lang-switcher-btn {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      color: var(--apple-blue);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .lang-switcher-btn:hover {
+      background: var(--apple-pill);
+      border-color: var(--apple-blue);
+    }
+
+    .btn-apple-icon {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      color: var(--apple-text);
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-apple-icon:hover {
+      background: var(--apple-pill);
+      transform: scale(1.04);
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-apple-icon svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    /* 3D Canvas Stage */
+    .stage {
+      width: 100%;
+      max-width: 1100px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 12px 16px;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 72vh;
+      min-height: 500px;
+      max-height: 720px;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f5f5f7 100%);
+      border-radius: 32px;
+      box-shadow: var(--apple-shadow);
+      border: 1px solid var(--apple-border);
+      --poster-color: transparent;
+      outline: none;
+    }
+
+    /* Floating Apple-style Aero Controls Dock */
+    .apple-dock {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(24px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+      z-index: 40;
+    }
+
+    .dock-action-btn {
+      background: transparent;
+      border: none;
+      color: var(--apple-text);
+      padding: 9px 15px;
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dock-action-btn:hover {
+      background: var(--apple-pill);
+    }
+
+    .dock-action-btn.active {
+      background: var(--apple-pill);
+      color: var(--apple-blue);
+    }
+
+    .dock-action-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .dock-action-btn.ar-primary-btn {
+      background: var(--apple-blue);
+      color: #ffffff;
+      padding: 9px 20px;
+      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
+    }
+
+    .dock-action-btn.ar-primary-btn:hover {
+      background: var(--apple-blue-hover);
+      transform: scale(1.02);
+    }
+
+    /* Aero Control Drawers */
+    .apple-modal {
+      position: absolute;
+      bottom: 92px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(30px);
+      border: 1px solid var(--apple-border);
+      border-radius: 24px;
+      padding: 20px 24px;
+      width: min(92vw, 380px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+      z-index: 45;
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .apple-modal.open {
+      display: flex;
+      animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateX(-50%) translateY(14px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--apple-border);
+      padding-bottom: 10px;
+    }
+
+    .modal-head h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--apple-text);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--apple-subtext);
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-item-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--apple-subtext);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .segmented-control {
+      display: flex;
+      background: var(--apple-pill);
+      padding: 3px;
+      border-radius: 12px;
+      gap: 4px;
+    }
+
+    .seg-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 7px;
+      border-radius: 9px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--apple-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .seg-btn.active {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      color: var(--apple-blue);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--apple-blue);
+      cursor: pointer;
+    }
+
+    /* Metadata Drawer (Apple Sheet Style) */
+    .metadata-sheet {
+      position: absolute;
+      top: 68px;
+      left: 24px;
+      width: min(92vw, 380px);
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(30px);
+      border: 1px solid var(--apple-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--apple-shadow);
+      z-index: 45;
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    html[dir="ltr"] .metadata-sheet {
+      left: auto;
+      right: 24px;
+    }
+
+    .metadata-sheet.open {
+      display: flex;
+      animation: sheetFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes sheetFade {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .meta-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-bottom: 1px solid var(--apple-border);
+      padding-bottom: 9px;
+    }
+
+    .meta-field:last-child {
+      border-bottom: none;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--apple-blue);
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--apple-text);
+      line-height: 1.4;
+    }
+
+    .dropzone {
+      border: 2px dashed rgba(0, 113, 227, 0.3);
+      background: rgba(0, 113, 227, 0.03);
+      padding: 14px;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.8rem;
+      color: var(--apple-blue);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .dropzone:hover {
+      background: rgba(0, 113, 227, 0.08);
+      border-color: var(--apple-blue);
+    }
+
+    /* iOS Status Indicator */
+    #ios-status {
+      position: absolute;
+      top: 75px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #34c759;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(52, 199, 89, 0.3);
+      display: none;
+      z-index: 60;
+    }
+
+    /* Custom Loading Bar */
+    .progress-bar {
+      display: block;
+      width: 30%;
+      height: 4px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+    .progress-bar.hide { visibility: hidden; }
+    .update-bar {
+      background-color: var(--apple-blue);
+      width: 0%;
+      height: 100%;
+      border-radius: 25px;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimalist Apple Header -->
+  <header>
+    <a href="#" class="brand">
+      <span class="brand-logo">alqami<span class="dot">.</span></span>
+      <span class="brand-badge" id="hdr-badge">Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ… (1009 Ù‡Ù€ / 1600 M)</span>
+    </a>
+    <div class="header-actions">
+      <!-- Language Switcher Button -->
+      <button class="lang-switcher-btn" id="btn-lang-toggle" title="Switch Language / ØªØºÙŠÙŠØ± Ø§Ù„Ù„ØºØ©">
+        <svg style="width:14px;height:14px;fill:currentColor;" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.08c1.74-1.94 2.98-4.17 3.71-6.49H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+        <span id="lang-label">English</span>
+      </button>
+
+      <button class="btn-apple-icon" id="btn-info-toggle" title="Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø®Ø·ÙˆØ·">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </button>
+      <button class="btn-apple-icon" id="btn-studio-toggle" title="ØªØ­ÙƒÙ… Adobe Aero">
+        <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+      </button>
+      <button class="btn-apple-icon" id="btn-snapshot" title="Ø­ÙØ¸ ØµÙˆØ±Ø© Ù„Ù„Ù…Ø®Ø·ÙˆØ·">
+        <svg viewBox="0 0 24 24"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- iOS AR Ready Status Indicator -->
+  <div id="ios-status"></div>
+
+  <!-- 3D Stage -->
+  <div class="stage">
+    <model-viewer
+      id="ar-viewer"
+      src="prayer_niche_mihrab.glb"
+      alt="Ù…Ø®Ø·ÙˆØ· Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ… 3D"
+      ar
+      ar-modes="quick-look scene-viewer webxr"
+      ar-scale="auto"
+      camera-controls
+      touch-action="pan-y"
+      auto-rotate
+      rotation-per-second="18deg"
+      shadow-intensity="1.0"
+      shadow-softness="0.9"
+      exposure="1.05"
+      environment-image="neutral"
+    >
+      <!-- Custom AR launch button slot -->
+      <div class="apple-dock" slot="ar-button">
+        <button class="dock-action-btn ar-primary-btn">
+          <svg viewBox="0 0 24 24"><path d="M3 4c0-1.1.9-2 2-2h4v2H5v4H3V4zm14-2h4c1.1 0 2 .9 2 2v4h-2V4h-4V2zm4 16v4c0 1.1-.9 2-2 2h-4v-2h4v-4h2zM7 20H5v-4H3v4c0 1.1.9 2 2 2h4v-2zm5-14l6 3.5v7L12 20l-6-3.5v-7L12 6zm0 2.31L7.75 10.8 12 13.25l4.25-2.45L12 8.31zM7 12.05v3.42l5 2.91v-3.42L7 12.05zm10 0l-5 2.91v3.42l5-2.91v-3.42z"/></svg>
+          <span class="t-view-ar-room">Ø¹Ø±Ø¶ Ø§Ù„Ù…Ø®Ø·ÙˆØ· ÙÙŠ ØºØ±ÙØªÙƒ (AR)</span>
+        </button>
+      </div>
+
+      <div class="progress-bar" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+    </model-viewer>
+  </div>
+
+  <!-- Bottom Floating Aero Controls Dock -->
+  <div class="apple-dock">
+    <button class="dock-action-btn" id="btn-spin">
+      <svg viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>
+      <span class="t-spin">Ø¯ÙˆØ±Ø§Ù† 360Â°</span>
+    </button>
+    <button class="dock-action-btn" id="btn-scale-menu">
+      <svg viewBox="0 0 24 24"><path d="M19 12h-2v3h-3v2h5v-5zM7 9h3V7H5v5h2V9zm14-6H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/></svg>
+      <span class="t-scale">Ø§Ù„Ø­Ø¬Ù…</span>
+    </button>
+    <button class="dock-action-btn" id="btn-reset-view">
+      <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+      <span class="t-reset">Ø¥Ø¹Ø§Ø¯Ø© Ø¶Ø¨Ø·</span>
+    </button>
+    <button class="dock-action-btn ar-primary-btn" id="btn-open-ar">
+      <svg viewBox="0 0 24 24"><path d="M3 4c0-1.1.9-2 2-2h4v2H5v4H3V4zm14-2h4c1.1 0 2 .9 2 2v4h-2V4h-4V2zm4 16v4c0 1.1-.9 2-2 2h-4v-2h4v-4h2zM7 20H5v-4H3v4c0 1.1.9 2 2 2h4v-2zm5-14l6 3.5v7L12 20l-6-3.5v-7L12 6z"/></svg>
+      <span class="t-ar-btn">ÙˆØ§Ù‚Ø¹ Ù…Ø¹Ø²Ø² AR</span>
+    </button>
+  </div>
+
+  <!-- Adobe Aero 3D Studio Modal -->
+  <div class="apple-modal" id="modal-studio">
+    <div class="modal-head">
+      <h3 class="t-studio-title">âš™ï¸ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ø¹Ø±Ø¶ (Adobe Aero)</h3>
+      <button class="modal-close" id="close-studio-btn">&times;</button>
+    </div>
+
+    <!-- Scale -->
+    <div class="control-item">
+      <div class="control-item-label">
+        <span class="t-obj-scale">Ø­Ø¬Ù… Ø§Ù„Ù…Ø®Ø·ÙˆØ· (Scale)</span>
+        <span id="label-scale">100%</span>
+      </div>
+      <div class="segmented-control">
+        <button class="seg-btn" data-scale="0.5">50%</button>
+        <button class="seg-btn active" data-scale="1.0">100%</button>
+        <button class="seg-btn" data-scale="1.5">150%</button>
+        <button class="seg-btn" data-scale="2.0">200%</button>
+      </div>
+    </div>
+
+    <!-- Lighting Environments -->
+    <div class="control-item">
+      <div class="control-item-label"><span class="t-lighting-env">Ø¨ÙŠØ¦Ø© Ø§Ù„Ø¥Ø¶Ø§Ø¡Ø© (Studio Lighting)</span></div>
+      <div class="segmented-control">
+        <button class="seg-btn active" data-env="neutral" id="env-neutral">Ø§Ø³ØªÙˆØ¯ÙŠÙˆ</button>
+        <button class="seg-btn" data-env="legacy" id="env-gallery">Ù…Ø¹Ø±Ø¶</button>
+        <button class="seg-btn" data-env="sunset" id="env-warm">Ø¯Ø§ÙØ¦</button>
+      </div>
+    </div>
+
+    <!-- Exposure -->
+    <div class="control-item">
+      <div class="control-item-label">
+        <span class="t-exposure">Ø´Ø¯Ø© Ø§Ù„Ø³Ø·ÙˆØ¹ (Exposure)</span>
+        <span id="label-exp">1.05</span>
+      </div>
+      <input type="range" id="slider-exp" min="0.5" max="2.0" step="0.05" value="1.05">
+    </div>
+
+    <!-- Shadows -->
+    <div class="control-item">
+      <div class="control-item-label">
+        <span class="t-shadows">Ø´Ø¯Ø© Ø§Ù„Ø¸Ù„Ø§Ù„ (Shadows)</span>
+        <span id="label-shadow">1.0</span>
+      </div>
+      <input type="range" id="slider-shadow" min="0" max="2.0" step="0.1" value="1.0">
+    </div>
+  </div>
+
+  <!-- Bibliographic Metadata Sheet (Full MARC 21 & RDF Details) -->
+  <div class="metadata-sheet" id="sheet-meta">
+    <div class="modal-head">
+      <h3 class="t-meta-title">ðŸ“š Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø®Ø·ÙˆØ· (MARC 21 / RDF)</h3>
+      <button class="modal-close" id="close-meta-btn">&times;</button>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-title">Ø§Ù„Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ (245)</span>
+      <span class="meta-value" id="disp-title">Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ…</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-scribe">Ø§Ù„Ù†Ø§Ø³Ø® (700 / 500)</span>
+      <span class="meta-value" id="disp-author">Ø­ÙŠØ¯Ø± Ø¹Ù„ÙŠ (Ø¹Ù„ÙŠØŒ Ø­ÙŠØ¯Ø±ØŒ Ù†Ø§Ø³Ø®)</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-date">ØªØ§Ø±ÙŠØ® Ø§Ù„Ù†Ø³Ø® ÙˆÙ…ÙƒØ§Ù†Ù‡ (264 / 500)</span>
+      <span class="meta-value" id="disp-date">1009 Ù‡Ù€. = [1600] Ù… (Ù†Ø³Ø®Øª ÙÙŠ Ø­Ø§Ø¦Ø± Ø§Ù„Ø¥Ù…Ø§Ù… Ø§Ù„Ø­Ø³ÙŠÙ† Ø¹Ù„ÙŠÙ‡ Ø§Ù„Ø³Ù„Ø§Ù…)</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-extent">Ø§Ù„ÙˆØµÙ Ø§Ù„Ù…Ø§Ø¯ÙŠ (300)</span>
+      <span class="meta-value" id="disp-extent">294 ÙˆØ±Ù‚Ø© (15 Ø³Ø·Ø±Ù‹Ø§)</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-material">Ø§Ù„Ù…Ø§Ø¯Ø© ÙˆÙ†ÙˆØ¹ Ø§Ù„Ø®Ø· (340)</span>
+      <span class="meta-value" id="disp-material">ÙˆØ±Ù‚ØŒ Ø­Ø¨Ø± Ø£Ø³ÙˆØ¯ØŒ Ø®Ø· Ø§Ù„Ù†Ø³Ø®</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-binding">Ø§Ù„ØºÙ„Ø§Ù ÙˆØ§Ù„ØªØ¬Ù„ÙŠØ¯ (563)</span>
+      <span class="meta-value" id="disp-binding">Ø¬Ù„Ø¯Ù† Ù„Ø§ÙƒÙŠ Ù…Ø²Ø®Ø±Ù</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-callno">Ø±Ù‚Ù… Ø§Ù„Ø§Ø³ØªØ¯Ø¹Ø§Ø¡ ÙˆØ§Ù„ØªØµÙ†ÙŠÙ (050 / 001)</span>
+      <span class="meta-value" id="disp-call">BP100.3 1600 (Ø§Ù„Ø±Ù‚Ù…: b125999 â€¢ Sirsi a214162)</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-holding">Ø¬Ù‡Ø© Ø§Ù„Ø­ÙØ¸ (949 / 535)</span>
+      <span class="meta-value" id="disp-holding">Ù…ÙƒØªØ¨Ø© Ø§Ù„Ø¹ØªØ¨Ø© Ø§Ù„Ø¹Ø¨Ø§Ø³ÙŠØ© Ø§Ù„Ù…Ù‚Ø¯Ø³Ø© (Ù…Ø¬Ù„Ø³ Ø§Ù„Ø´ÙˆØ±Ù‰: 4175)</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-notes">Ø§Ù„Ù…Ù„Ø§Ø­Ø¸Ø§Øª ÙˆØ§Ù„Ø²Ø®Ø±ÙØ© (500)</span>
+      <span class="meta-value" id="disp-notes">Ø§Ù„Ù†Ø³Ø®Ø© Ù…Ø¬Ø¯ÙˆÙ„Ø© Ø¨Ø¹Ø¯Ø© Ø£Ù„ÙˆØ§Ù† ÙˆØ§Ù„ØµÙØ­Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ ÙˆØ§Ù„Ø«Ø§Ù†ÙŠØ© Ù…Ø²Ø®Ø±ÙØ©. ØµØ¯Ø± ÙƒÙ„ Ø³ÙˆØ±Ø© Ù„ÙˆØ­Ø© Ø°Ù‡Ø¨ÙŠØ© ÙˆÙÙŠ Ù‡ÙˆØ§Ù…Ø´Ù‡Ø§ Ø¯ÙˆØ§Ø¦Ø± Ù…Ø²Ø®Ø±ÙØ© Ù„Ø¨ÙŠØ§Ù† Ø§Ù„Ø­Ø²Ø¨ ÙˆØ¨Ø¯Ø§ÙŠØ© Ø§Ù„Ø£Ø¬Ø²Ø§Ø¡.</span>
+    </div>
+
+    <div class="meta-field">
+      <span class="meta-label t-lbl-source">Ø§Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø±Ø³Ù…ÙŠ</span>
+      <a href="https://kiqp.net/bibliography/125999" target="_blank" style="color:var(--apple-blue); font-size:0.82rem; word-break:break-all;">https://kiqp.net/bibliography/125999</a>
+    </div>
+
+    <!-- RDF File Upload Dropzone -->
+    <label class="dropzone" id="drop-area">
+      <span class="t-dropzone">ðŸ“ Ø§Ø³Ø­Ø¨ ÙˆØ£ÙÙ„Øª Ø£ÙŠ Ù…Ù„Ù RDF / XML Ø¬Ø¯ÙŠØ¯ Ù‡Ù†Ø§</span>
+      <input type="file" id="file-rdf" accept=".rdf,.xml,.jsonld,.ttl" style="display:none;">
+    </label>
+  </div>
+
+  <script type="module">
+    const viewer = document.querySelector("#ar-viewer");
+    const modalStudio = document.querySelector("#modal-studio");
+    const sheetMeta = document.querySelector("#sheet-meta");
+    const statusText = document.querySelector("#ios-status");
+    const htmlRoot = document.querySelector("#html-root");
+
+    let currentLang = 'ar';
+
+    const translations = {
+      ar: {
+        dir: 'rtl',
+        badge: 'Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ… (1009 Ù‡Ù€ / 1600 M)',
+        langBtn: 'English',
+        viewArRoom: 'Ø¹Ø±Ø¶ Ø§Ù„Ù…Ø®Ø·ÙˆØ· ÙÙŠ ØºØ±ÙØªÙƒ (AR)',
+        spin: 'Ø¯ÙˆØ±Ø§Ù† 360Â°',
+        scale: 'Ø§Ù„Ø­Ø¬Ù…',
+        reset: 'Ø¥Ø¹Ø§Ø¯Ø© Ø¶Ø¨Ø·',
+        arBtn: 'ÙˆØ§Ù‚Ø¹ Ù…Ø¹Ø²Ø² AR',
+        studioTitle: 'âš™ï¸ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ø¹Ø±Ø¶ (Adobe Aero)',
+        objScale: 'Ø­Ø¬Ù… Ø§Ù„Ù…Ø®Ø·ÙˆØ· (Scale)',
+        lightingEnv: 'Ø¨ÙŠØ¦Ø© Ø§Ù„Ø¥Ø¶Ø§Ø¡Ø© (Studio Lighting)',
+        envNeutral: 'Ø§Ø³ØªÙˆØ¯ÙŠÙˆ',
+        envGallery: 'Ù…Ø¹Ø±Ø¶',
+        envWarm: 'Ø¯Ø§ÙØ¦',
+        exposure: 'Ø´Ø¯Ø© Ø§Ù„Ø³Ø·ÙˆØ¹ (Exposure)',
+        shadows: 'Ø´Ø¯Ø© Ø§Ù„Ø¸Ù„Ø§Ù„ (Shadows)',
+        metaTitle: 'ðŸ“š Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø®Ø·ÙˆØ· (MARC 21 / RDF)',
+        lblTitle: 'Ø§Ù„Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ (245)',
+        lblScribe: 'Ø§Ù„Ù†Ø§Ø³Ø® (700 / 500)',
+        lblDate: 'ØªØ§Ø±ÙŠØ® Ø§Ù„Ù†Ø³Ø® ÙˆÙ…ÙƒØ§Ù†Ù‡ (264 / 500)',
+        lblExtent: 'Ø§Ù„ÙˆØµÙ Ø§Ù„Ù…Ø§Ø¯ÙŠ (300)',
+        lblMaterial: 'Ø§Ù„Ù…Ø§Ø¯Ø© ÙˆÙ†ÙˆØ¹ Ø§Ù„Ø®Ø· (340)',
+        lblBinding: 'Ø§Ù„ØºÙ„Ø§Ù ÙˆØ§Ù„ØªØ¬Ù„ÙŠØ¯ (563)',
+        lblCallNo: 'Ø±Ù‚Ù… Ø§Ù„Ø§Ø³ØªØ¯Ø¹Ø§Ø¡ ÙˆØ§Ù„ØªØµÙ†ÙŠÙ (050 / 001)',
+        lblHolding: 'Ø¬Ù‡Ø© Ø§Ù„Ø­ÙØ¸ (949 / 535)',
+        lblNotes: 'Ø§Ù„Ù…Ù„Ø§Ø­Ø¸Ø§Øª ÙˆØ§Ù„Ø²Ø®Ø±ÙØ© (500)',
+        lblSource: 'Ø§Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø±Ø³Ù…ÙŠ',
+        dropzone: 'ðŸ“ Ø§Ø³Ø­Ø¨ ÙˆØ£ÙÙ„Øª Ø£ÙŠ Ù…Ù„Ù RDF / XML Ø¬Ø¯ÙŠØ¯ Ù‡Ù†Ø§',
+        titleVal: 'Ø§Ù„Ù‚Ø±Ø¢Ù† Ø§Ù„ÙƒØ±ÙŠÙ…',
+        authorVal: 'Ø­ÙŠØ¯Ø± Ø¹Ù„ÙŠ (Ø¹Ù„ÙŠØŒ Ø­ÙŠØ¯Ø±ØŒ Ù†Ø§Ø³Ø®)',
+        dateVal: '1009 Ù‡Ù€. = [1600] Ù… (Ù†Ø³Ø®Øª ÙÙŠ Ø­Ø§Ø¦Ø± Ø§Ù„Ø¥Ù…Ø§Ù… Ø§Ù„Ø­Ø³ÙŠÙ† Ø¹Ù„ÙŠÙ‡ Ø§Ù„Ø³Ù„Ø§Ù…)',
+        extentVal: '294 ÙˆØ±Ù‚Ø© (15 Ø³Ø·Ø±Ù‹Ø§)',
+        materialVal: 'ÙˆØ±Ù‚ØŒ Ø­Ø¨Ø± Ø£Ø³ÙˆØ¯ØŒ Ø®Ø· Ø§Ù„Ù†Ø³Ø®',
+        bindingVal: 'Ø¬Ù„Ø¯Ù† Ù„Ø§ÙƒÙŠ Ù…Ø²Ø®Ø±Ù',
+        callVal: 'BP100.3 1600 (Ø§Ù„Ø±Ù‚Ù…: b125999 â€¢ Sirsi a214162)',
+        holdingVal: 'Ù…ÙƒØªØ¨Ø© Ø§Ù„Ø¹ØªØ¨Ø© Ø§Ù„Ø¹Ø¨Ø§Ø³ÙŠØ© Ø§Ù„Ù…Ù‚Ø¯Ø³Ø© (Ù…Ø¬Ù„Ø³ Ø§Ù„Ø´ÙˆØ±Ù‰: 4175)',
+        notesVal: 'Ø§Ù„Ù†Ø³Ø®Ø© Ù…Ø¬Ø¯ÙˆÙ„Ø© Ø¨Ø¹Ø¯Ø© Ø£Ù„ÙˆØ§Ù† ÙˆØ§Ù„ØµÙØ­Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ ÙˆØ§Ù„Ø«Ø§Ù†ÙŠØ© Ù…Ø²Ø®Ø±ÙØ©. ØµØ¯Ø± ÙƒÙ„ Ø³ÙˆØ±Ø© Ù„ÙˆØ­Ø© Ø°Ù‡Ø¨ÙŠØ© ÙˆÙÙŠ Ù‡ÙˆØ§Ù…Ø´Ù‡Ø§ Ø¯ÙˆØ§Ø¦Ø± Ù…Ø²Ø®Ø±ÙØ© Ù„Ø¨ÙŠØ§Ù† Ø§Ù„Ø­Ø²Ø¨ ÙˆØ¨Ø¯Ø§ÙŠØ© Ø§Ù„Ø£Ø¬Ø²Ø§Ø¡.'
+      },
+      en: {
+        dir: 'ltr',
+        badge: 'Holy Quran Manuscript (1009 AH / 1600 AD)',
+        langBtn: 'Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©',
+        viewArRoom: 'View in Your Space (AR)',
+        spin: '360Â° Spin',
+        scale: 'Scale',
+        reset: 'Reset',
+        arBtn: 'View AR',
+        studioTitle: 'âš™ï¸ Studio Controls (Adobe Aero)',
+        objScale: 'Object Scale',
+        lightingEnv: 'Studio Lighting Environment',
+        envNeutral: 'Studio',
+        envGallery: 'Gallery',
+        envWarm: 'Warm',
+        exposure: 'Exposure / Brightness',
+        shadows: 'Ground Shadow Intensity',
+        metaTitle: 'ðŸ“š Manuscript Metadata (MARC 21 / RDF)',
+        lblTitle: 'Main Title (245)',
+        lblScribe: 'Scribe / Calligrapher (700 / 500)',
+        lblDate: 'Date & Origin (264 / 500)',
+        lblExtent: 'Physical Description (300)',
+        lblMaterial: 'Material & Script (340)',
+        lblBinding: 'Binding & Cover (563)',
+        lblCallNo: 'Call Number & IDs (050 / 001)',
+        lblHolding: 'Holding Institution (949 / 535)',
+        lblNotes: 'Illumination & Notes (500)',
+        lblSource: 'Official Record URL',
+        dropzone: 'ðŸ“ Drag and drop any new RDF / XML file here',
+        titleVal: 'The Holy Quran Manuscript',
+        authorVal: 'Haydar Ali (Ali, Haydar, Scribe)',
+        dateVal: '1009 AH = [1600 AD] (Copied at the Shrine of Imam Hussain)',
+        extentVal: '294 Leaves (15 lines per page)',
+        materialVal: 'Paper, Black Ink, Naskh Script',
+        bindingVal: 'Lacquered Decorative Leather Binding',
+        callVal: 'BP100.3 1600 (ID: b125999 â€¢ Sirsi a214162)',
+        holdingVal: 'Al-Abbas Holy Shrine Library (Majlis Shura: 4175)',
+        notesVal: 'Polychrome ruled borders, illuminated opening pages, gilded surah headings, and ornamental marginal circles.'
+      }
+    };
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      htmlRoot.setAttribute('dir', t.dir);
+      htmlRoot.setAttribute('lang', lang);
+
+      document.querySelector("#hdr-badge").innerText = t.badge;
+      document.querySelector("#lang-label").innerText = t.langBtn;
+
+      document.querySelectorAll(".t-view-ar-room").forEach(el => el.innerText = t.viewArRoom);
+      document.querySelector(".t-spin").innerText = t.spin;
+      document.querySelector(".t-scale").innerText = t.scale;
+      document.querySelector(".t-reset").innerText = t.reset;
+      document.querySelector(".t-ar-btn").innerText = t.arBtn;
+      document.querySelector(".t-studio-title").innerText = t.studioTitle;
+      document.querySelector(".t-obj-scale").innerText = t.objScale;
+      document.querySelector(".t-lighting-env").innerText = t.lightingEnv;
+      document.querySelector("#env-neutral").innerText = t.envNeutral;
+      document.querySelector("#env-gallery").innerText = t.envGallery;
+      document.querySelector("#env-warm").innerText = t.envWarm;
+      document.querySelector(".t-exposure").innerText = t.exposure;
+      document.querySelector(".t-shadows").innerText = t.shadows;
+      document.querySelector(".t-meta-title").innerText = t.metaTitle;
+      document.querySelector(".t-lbl-title").innerText = t.lblTitle;
+      document.querySelector(".t-lbl-scribe").innerText = t.lblScribe;
+      document.querySelector(".t-lbl-date").innerText = t.lblDate;
+      document.querySelector(".t-lbl-extent").innerText = t.lblExtent;
+      document.querySelector(".t-lbl-material").innerText = t.lblMaterial;
+      document.querySelector(".t-lbl-binding").innerText = t.lblBinding;
+      document.querySelector(".t-lbl-callno").innerText = t.lblCallNo;
+      document.querySelector(".t-lbl-holding").innerText = t.lblHolding;
+      document.querySelector(".t-lbl-notes").innerText = t.lblNotes;
+      document.querySelector(".t-lbl-source").innerText = t.lblSource;
+      document.querySelector(".t-dropzone").innerText = t.dropzone;
+
+      document.querySelector("#disp-title").innerText = t.titleVal;
+      document.querySelector("#disp-author").innerText = t.authorVal;
+      document.querySelector("#disp-date").innerText = t.dateVal;
+      document.querySelector("#disp-extent").innerText = t.extentVal;
+      document.querySelector("#disp-material").innerText = t.materialVal;
+      document.querySelector("#disp-binding").innerText = t.bindingVal;
+      document.querySelector("#disp-call").innerText = t.callVal;
+      document.querySelector("#disp-holding").innerText = t.holdingVal;
+      document.querySelector("#disp-notes").innerText = t.notesVal;
+    }
+
+    // Toggle Language Button
+    document.querySelector("#btn-lang-toggle").addEventListener('click', () => {
+      applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    // Progress bar
+    viewer.addEventListener('progress', (e) => {
+      const bar = viewer.querySelector('.progress-bar');
+      const update = viewer.querySelector('.update-bar');
+      if (bar && update) {
+        update.style.width = `${e.detail.totalProgress * 100}%`;
+        if (e.detail.totalProgress === 1) bar.classList.add('hide');
+      }
+    });
+
+    // Toggle Modals
+    document.querySelector("#btn-info-toggle").addEventListener('click', () => {
+      sheetMeta.classList.toggle('open');
+      modalStudio.classList.remove('open');
+    });
+    document.querySelector("#close-meta-btn").addEventListener('click', () => sheetMeta.classList.remove('open'));
+
+    document.querySelector("#btn-studio-toggle").addEventListener('click', () => {
+      modalStudio.classList.toggle('open');
+      sheetMeta.classList.remove('open');
+    });
+    document.querySelector("#close-studio-btn").addEventListener('click', () => modalStudio.classList.remove('open'));
+
+    // Dock Buttons
+    document.querySelector("#btn-spin").addEventListener('click', function() {
+      viewer.autoRotate = !viewer.autoRotate;
+      this.classList.toggle('active', viewer.autoRotate);
+    });
+
+    document.querySelector("#btn-scale-menu").addEventListener('click', () => {
+      modalStudio.classList.toggle('open');
+    });
+
+    document.querySelector("#btn-reset-view").addEventListener('click', () => {
+      viewer.cameraOrbit = "0deg 75deg 105%";
+      viewer.cameraTarget = "auto auto auto";
+      viewer.scale = "1 1 1";
+      document.querySelector("#label-scale").innerText = "100%";
+      document.querySelectorAll('[data-scale]').forEach(b => b.classList.toggle('active', b.dataset.scale === "1.0"));
+    });
+
+    document.querySelector("#btn-open-ar").addEventListener('click', () => {
+      viewer.activateAR();
+    });
+
+    // Photo Snapshot
+    document.querySelector("#btn-snapshot").addEventListener('click', async () => {
+      const dataUrl = await viewer.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = 'alqami_quran_manuscript.png';
+      a.click();
+    });
+
+    // Scale Selector
+    document.querySelectorAll('[data-scale]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-scale]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const s = btn.dataset.scale;
+        viewer.scale = `${s} ${s} ${s}`;
+        document.querySelector("#label-scale").innerText = `${Math.round(s * 100)}%`;
+      });
+    });
+
+    // Environment Lighting Selector
+    document.querySelectorAll('[data-env]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-env]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        viewer.environmentImage = btn.dataset.env;
+      });
+    });
+
+    // Sliders
+    document.querySelector("#slider-exp").addEventListener('input', (e) => {
+      viewer.exposure = e.target.value;
+      document.querySelector("#label-exp").innerText = e.target.value;
+    });
+
+    document.querySelector("#slider-shadow").addEventListener('input', (e) => {
+      viewer.shadowIntensity = e.target.value;
+      document.querySelector("#label-shadow").innerText = e.target.value;
+    });
+
+    // Dynamic RDF XML Parser
+    async function loadRDF(url) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const text = await res.text();
+        parseAndApplyRDF(text);
+      } catch (e) {
+        console.warn('RDF load info:', e);
+      }
+    }
+
+    function parseAndApplyRDF(xmlStr) {
+      const doc = new DOMParser().parseFromString(xmlStr, "application/xml");
+      const find = (sel) => {
+        const el = doc.querySelector(sel);
+        return el ? el.textContent.trim() : null;
+      };
+
+      const title = find("mainTitle, Title mainTitle, dc\\:title, title");
+      const author = find("agent rdfs\\:label, responsibilityStatement, Person rdfs\\:label");
+      const date = find("publicationStatement, date");
+      const extent = find("extent rdfs\\:label, extent");
+      const material = find("material rdfs\\:label");
+      const binding = find("binding rdfs\\:label");
+      const note = find("Note rdfs\\:label, note");
+
+      if (title) {
+        document.querySelector("#disp-title").innerText = title;
+        document.title = "alqami â€¢ " + title;
+        const badge = document.querySelector("#hdr-badge");
+        if (badge) badge.innerText = title;
+      }
+      if (author) document.querySelector("#disp-author").innerText = author;
+      if (date) document.querySelector("#disp-date").innerText = date;
+      if (extent) document.querySelector("#disp-extent").innerText = extent;
+      if (material) document.querySelector("#disp-material").innerText = material;
+      if (binding) document.querySelector("#disp-binding").innerText = binding;
+      if (note) document.querySelector("#disp-notes").innerText = note;
+    }
+
+    loadRDF('prayer_niche_mihrab.rdf');
+
+    // Dynamic File Input for RDF
+    const fileInput = document.querySelector("#file-rdf");
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const r = new FileReader();
+        r.onload = (evt) => {
+          parseAndApplyRDF(evt.target.result);
+          alert(currentLang === 'ar' ? 'âœ… ØªÙ… ØªØ­Ø¯ÙŠØ« Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø®Ø·ÙˆØ· Ø¨Ù†Ø¬Ø§Ø­ Ù…Ù† Ù…Ù„Ù Ø§Ù„Ù€ RDF!' : 'âœ… Metadata successfully updated from RDF file!');
+        };
+        r.readAsText(file);
+      }
+    });
+
+    // iOS Safari Quick Look USDZ converter
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+      fetch('prayer_niche_mihrab.usdz', { method: 'HEAD' })
+        .then(r => {
+          if (r.ok) viewer.setAttribute('ios-src', 'prayer_niche_mihrab.usdz');
+          else prepareIOSUSDZ();
+        })
+        .catch(() => prepareIOSUSDZ());
+    }
+
+    async function prepareIOSUSDZ() {
+      try {
+        statusText.style.display = 'block';
+        statusText.innerText = currentLang === 'ar' ? 'âš¡ Ø¬Ø§Ø±ÙŠ ØªÙ‡ÙŠØ¦Ø© Ø§Ù„ÙˆØ§Ù‚Ø¹ Ø§Ù„Ù…Ø¹Ø²Ø² Ù„Ù„Ø¢ÙŠÙÙˆÙ†...' : 'âš¡ Optimizing AR for iPhone...';
+
+        const [{ default: THREE }, { GLTFLoader }, { USDZExporter }] = await Promise.all([
+          import('https://unpkg.com/three@0.165.0/build/three.module.js'),
+          import('https://unpkg.com/three@0.165.0/examples/jsm/loaders/GLTFLoader.js'),
+          import('https://unpkg.com/three@0.165.0/examples/jsm/exporters/USDZExporter.js')
+        ]);
+
+        const loader = new GLTFLoader();
+        const exporter = new USDZExporter();
+
+        loader.load('prayer_niche_mihrab.glb', async (gltf) => {
+          try {
+            const usdzArrayBuffer = await exporter.parseAsync(gltf.scene);
+            const blob = new Blob([usdzArrayBuffer], { type: 'model/vnd.usdz+zip' });
+            const usdzBlobUrl = URL.createObjectURL(blob);
+            viewer.setAttribute('ios-src', usdzBlobUrl);
+            statusText.innerText = currentLang === 'ar' ? 'âœ… Ø¬Ø§Ù‡Ø² Ù„Ù„Ø¹Ø±Ø¶ ÙÙŠ Ø§Ù„ÙˆØ§Ù‚Ø¹ Ø§Ù„Ù…Ø¹Ø²Ø²!' : 'âœ… Ready for AR!';
+            setTimeout(() => { statusText.style.display = 'none'; }, 3000);
+          } catch (err) {
+            console.error('USDZ export error:', err);
+            statusText.style.display = 'none';
+          }
+        }, undefined, () => {
+          statusText.style.display = 'none';
+        });
+      } catch (e) {
+        console.error('Three.js setup error:', e);
+        if (statusText) statusText.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
+
